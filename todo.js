@@ -1,8 +1,6 @@
 let form = document.querySelector('#addNewTodo');
 let input = document.querySelector('input');
-// let list = document.querySelectorAll('li');
 let ul = document.querySelector('ul');
-// let allTodoItems = [];
 
 // #region CREATE AND APPEND NEW ELEMENT TO LIST (UL) - BEGIN
 function createNewElement() {
@@ -15,8 +13,6 @@ function createNewElement() {
         checkbox.className = 'checkbox';
         todoText.className = 'todo-text';
         removeBtn.className = 'delete';
-
-        // allTodoItems.push(input.value);
 
         todoText.textContent = input.value;
         input.value = '';
