@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="todo.css">
+    <title>ToDo - Todos Done Right</title>
+</head>
+
+<body>
+    <div id="main-wrapper">
+        <div id="top-container">
+            <img src="images/todo logo.svg" alt="Todo Logo" width="100">
+            <span>Todos, simplified.</span>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div id="main-container">
+
+            <!-- INPUT FORM -->
+            <form id="addNewTodo">
+                <input type="text" placeholder="Add new Todo" autofocus>
+                <button type="submit" id="addNewTodoButton"></button>
+            </form>
+
+            <!-- ERROR MESSAGE BOX -->
+            <div id="error-message">
+                <p>This field can't be empty, please enter some text.</p>
+            </div>
+
+            <!-- LIST CONTAINER AND ITEMS -->
+            <div id="list-container">
+                <ul>
+                    <li>
+                        <span class="checkbox"></span>
+                        <span class="todo-text">Work on 2DO App</span>
+                        <span class="delete"></span>
+                    </li>
+                    <li>
+                        <span class="checkbox"></span>
+                        <span class="todo-text">Keep learning JS</span>
+                        <span class="delete"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+
+</html>
