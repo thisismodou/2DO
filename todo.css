@@ -111,7 +111,7 @@ input{
 }
 
 .list-item-done{
-    opacity: .7;
+    opacity: .6;
 }
 /* #endregion LIST STYLES - END */
 
@@ -125,7 +125,6 @@ input{
 
 .checkbox-done{
     background: url('images/check-square.svg') no-repeat right center;
-    opacity: .3;
 }
 
 .todo-text{
@@ -133,20 +132,11 @@ input{
     flex: 1;
 }
 
-.todo-text-done{
-    opacity: .3;
-}
-
 .delete{
     background: url('images/trash-purple.svg') no-repeat center center;
     width: 80px;
     height: 100%;
     cursor: pointer;
-}
-
-.delete-done{
-    background: url('images/trash-purple.svg') no-repeat center center;
-    opacity: .3;
 }
 
 .delete:hover{
