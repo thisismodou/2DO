@@ -2,28 +2,30 @@ let form = document.querySelector('#addNewTodo');
 let input = document.querySelector('input');
 let ul = document.querySelector('ul');
 
-// #region CREATE AND APPEND NEW ELEMENT TO LIST (UL) - BEGIN
-function createNewElement() {
+function createListItem(item) {
     if (input.value.length > 0) {
-        let li = document.createElement('li');
-        let checkbox = document.createElement('span');
-        let todoText = document.createElement('span');
-        let removeBtn = document.createElement('span');
+        let listItem = `<li>
+        <span class="checkbox"></span>
+        <span class="todo-text">${input.value}</span>
+        <span onclick="deleteListItem(this)" class="delete"></span>
+    </li>`;
 
-        checkbox.className = 'checkbox';
-        todoText.className = 'todo-text';
-        removeBtn.className = 'delete';
+        ul.insertAdjacentHTML('afterbegin', listItem);
 
-        todoText.textContent = input.value;
         input.value = '';
-
-        li.appendChild(checkbox);
-        li.appendChild(todoText);
-        li.appendChild(removeBtn);
-        ul.insertBefore(li, ul.firstElementChild);
     } else {
         showErrorMessage();
     }
+
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    createListItem(input.value);
+});
+
+function deleteListItem(item) {
+    item.parentElement.remove();
 }
 
 // Show Error Message if user submits while input is empty
@@ -39,43 +41,17 @@ function showErrorMessage() {
     })
 }
 
-form.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (e.target.tagName === 'BUTTON') {
-        createNewElement();
-    }
-});
-// #endregion CREATE AND APPEND NEW ELEMENT TO LIST (UL) - END
-
-// #region COMPLETE AND/OR DELETE ELEMENT - BEGIN
-// COMPLETE ITEM
 function completeTodo(e) {
     let listItem = e.target.parentElement;
     let checkbox = e.target;
-    let text = e.target.nextElementSibling;
-    let trash = e.target.nextElementSibling.nextElementSibling;
 
-    if (listItem.tagName === 'LI') {
-        listItem.classList.toggle('list-item-done');
-        checkbox.classList.toggle('checkbox-done');
-        text.classList.toggle('todo-text-done');
-        trash.classList.toggle('delete-done');
-    }
-}
-
-// DELETE ITEM
-function deleteElement(e) {
-    let li = e.target.parentElement;
-    ul.removeChild(li);
+    listItem.classList.toggle('list-item-done');
+    checkbox.classList.toggle('checkbox-done');
 }
 
 ul.addEventListener('click', (e) => {
     e.preventDefault();
-    if (e.target.className === 'delete') {
-        deleteElement(e);
-    }
     if (e.target.className === 'checkbox') {
         completeTodo(e);
     }
 });
-// #endregion COMPLETE AND/OR DELETE ELEMENT - END
