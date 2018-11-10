@@ -2,6 +2,7 @@ let form = document.querySelector('#addNewTodo');
 let input = document.querySelector('input');
 let ul = document.querySelector('ul');
 
+// Create a list item
 function createListItem(item) {
     if (input.value.length > 0) {
         let listItem = `<li>
@@ -11,8 +12,8 @@ function createListItem(item) {
     </li>`;
 
         ul.insertAdjacentHTML('afterbegin', listItem);
-
         input.value = '';
+        
     } else {
         showErrorMessage();
     }
@@ -24,6 +25,7 @@ form.addEventListener('submit', (e) => {
     createListItem(input.value);
 });
 
+// Delete a list item
 function deleteListItem(item) {
     item.parentElement.remove();
 }
@@ -41,6 +43,7 @@ function showErrorMessage() {
     })
 }
 
+// Complete a list item
 function completeTodo(e) {
     let listItem = e.target.parentElement;
     let checkbox = e.target;
